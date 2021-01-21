@@ -34,13 +34,33 @@ body {
     margin: 1vh auto;
 }
 
-#gameBoard div {
-    width: 80%;
+#questNbr, #quest, .case {
     background-color: white;
     border: black 1px solid;
+}
+
+#questNbr, #quest, #answer {
+    width: 80%;
     /*  this time   */
-    min-height: 10vh;
+    min-height: 5vh;
     margin: 1vh auto;
+}
+
+#start {
+    width: 5vw;
+    margin: 2vh auto;
+}
+
+#answer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.case {
+    margin: 2vw 0;
+    width: 45%;
+    height: 5vh;
 }
 
 /*@media screen and (max-width: px) {*/

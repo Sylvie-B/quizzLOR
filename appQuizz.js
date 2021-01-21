@@ -3,31 +3,31 @@ $('#container').css('background-color', "#ff7f5080");
 let quest = [
     {
         "text" : "Qui est Frodon ?",
-        "good" : 1,
+        "good" : 0,
         "choice" : [
             "Un hobbit de la Comtée",
             "Le jardinier de Bilbon",
             "Un magicien",
-            "Un pilote futur X-Wing"
+            "Un futur pilote de X-Wing"
         ],
-        "answer" : "1 - Frodon est un hobbit de la Comtée.",
+        "answer" : "Frodon est un hobbit de la Comtée.",
         "pict" : "url('')",
     },
     {
         "text" : "Quel est son lien de parenté avec Bilbon ?",
-        "good" : 4,
+        "good" : 3,
         "choice" : [
             "Frère",
             "Aucun lien",
             "Fils",
             "Neveu",
         ],
-        "answer" : "2 - Il est son neveu adoptif.",
+        "answer" : "Il est son neveu adoptif.",
         "pict" : "url('')",
     },
     {
         "text" : "Combien de personne forme la communauté de l'anneau ?",
-        "good" : 3,
+        "good" : 2,
         "choice" : [
             "3",
             "6",
@@ -40,7 +40,7 @@ let quest = [
     },
     {
         "text" : "Gimli est un ",
-        "good" : 2,
+        "good" : 1,
         "choice" : [
             "elfe",
             "nain",
@@ -52,7 +52,7 @@ let quest = [
     },
     {
         "text" : "Quel est le surnom d'Aragorn ?",
-        "good" : 1,
+        "good" : 0,
         "choice" : [
             "Grand-pas",
             "Long-bow",
@@ -64,7 +64,7 @@ let quest = [
     },
     {
         "text" : "Rendez-vous est donné avec Gandalf à l'auberge :",
-        "good" : 2,
+        "good" : 1,
         "choice" : [
             "du Dragon vert",
             "du Poney fringant",
@@ -76,7 +76,7 @@ let quest = [
     },
     {
         "text" : "Combien de nazgul se lancent à leur poursuite",
-        "good" : 4,
+        "good" : 3,
         "choice" : [
             "1",
             "3",
@@ -88,7 +88,7 @@ let quest = [
     },
     {
         "text" : "Trouvé l'intrus",
-        "good" : 3,
+        "good" : 2,
         "choice" : [
             "Gandalf le Blanc",
             "Gandalf le Gris",
@@ -100,14 +100,14 @@ let quest = [
     },
     {
         "text" : "Qu'est-ce que le Lembas ?",
-        "good" : 2,
+        "good" : 1,
         "choice" : [
             "la langue des elfe",
             "du pain elfique",
             "le minerai de la Moria",
             "l'herbe à pipe",
         ],
-        "answer" : "",
+        "answer" : "Le pain elfique, une bouchée suffit à nourrir un adulte pour la journée.",
         "pict" : "url('')",
     },
     {
@@ -119,9 +119,41 @@ let quest = [
             "un balrog",
             "Sauron",
         ],
-        "answer" : "",
+        "answer" : "Il combat le balrog et lui dit : :\"Vous ne passerz-pas !\"",
         "pict" : "url('')",
     }
 ]
 
-console.log(quest);
+// set display
+$('#nbr').text(quest.length);
+$('#answer').hide();
+
+// beginning screen to screen question 1
+let userAns = [];
+
+$('.ans').click(function (){
+    console.log($(this));
+    // hidden start button
+    $('#start').hide();
+    // display quest index userAns.length
+    let a = userAns.length;
+    $('#questNbr').show().text('Question ' + (a + 1));
+    $('#quest').text(quest[a].text)
+    $('#answer').show();
+    // one choice for each case
+    $('.case').each(function (i){
+        $(this).text(quest[a].choice[i]);
+    })
+    a = userAns.push(($(this).index()-1));
+    console.log("index " + ($(this).index()-1));
+})
+
+// $('.case').click(function (){
+//     a++;
+//     $('#questNbr').show().text('');
+//     $('#quest').text(quest[a].text)
+//     // one choice for each case
+//     $('.case').each(function (i){
+//         $(this).text(quest[a].choice[i]);
+//     })
+// })

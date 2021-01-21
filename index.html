@@ -9,12 +9,34 @@
 <body>
     <div id="container">
         <div id="display">
-            <div id="quizz">QUIZZ</div>
+            <div id="quizz">QUIZ</div>
             <div id="gameBoard">
-                <div id="questNbr"></div>   <!--    number of question / question number    -->
-                <div id="quest"></div>      <!--    text before start    -->
-                <div id="answer"></div>     <!--    start button to hidden / multiple choice    -->
+
+                <!--    number of question / question number    -->
+                <div id="questNbr">
+                    Quiz de <span id="nbr"></span> questions
+                </div>
+
+                <!--    text before start    -->
+                <div id="quest">
+                    Sur la trilogie du Seigneur des anneaux
+                </div>
+
+                <!--    button before start    -->
+                <div id="start">
+                    <button id="btnStart" class="ans">start</button>
+                </div>
+
+                <!--    start button to hidden / multiple choice    -->
+                <div id="answer">
+                    <div class="case ans"></div>
+                    <div class="case ans"></div>
+                    <div class="case ans"></div>
+                    <div class="case ans"></div>
+                </div>
+
             </div>
+
         </div>
     </div>
 
