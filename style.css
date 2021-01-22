@@ -25,13 +25,18 @@ body {
 #quizz, #gameBoard {
     border: black 1px solid;
     background-color: cadetblue;
-    font-size: 2vw;
+
     text-align: center;
 
 }
 
+#quizz {
+    font-size: 2vw;
+}
+
 #gameBoard {
     margin: 1vh auto;
+    font-size: 1.5vw;
 }
 
 #questNbr, #quest, .case {
@@ -41,8 +46,7 @@ body {
 
 #questNbr, #quest, #answer {
     width: 80%;
-    /*  this time   */
-    min-height: 5vh;
+    min-height: 10vh;
     margin: 1vh auto;
 }
 
@@ -63,7 +67,20 @@ body {
     height: 5vh;
 }
 
-/*@media screen and (max-width: px) {*/
-/* */
-/*}*/
+@media screen and (max-width: 800px) {
+    #quizz {
+        font-size: 3vw;
+    }
+    #gameBoard {
+        font-size: 2vw;
+    }
+}
 
+@media screen and (max-width: 600px) {
+    #quizz {
+        font-size: 4vw;
+    }
+    #gameBoard {
+        font-size: 3vw;
+    }
+}
