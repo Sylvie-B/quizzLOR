@@ -53,6 +53,7 @@ body {
 #start {
     width: 5vw;
     margin: 2vh auto;
+    background: darkcyan;
 }
 
 #answer {

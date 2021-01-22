@@ -1,5 +1,3 @@
-$('#container').css('background-color', "#ff7f5080");
-
 let quest = [
     {
         "text" : "Qui est Frodon ?",
@@ -124,19 +122,30 @@ let quest = [
     }
 ]
 
+$('#container').css('background-color', "#ff7f5080");
 // set display
 $('#nbr').text(quest.length);
 $('#answer').hide();
-
 // beginning screen to screen question 1
-let userAns = [];
 
-$('.ans').click(function (){
-    console.log($(this));
+$('#start').click(function (){
     // hidden start button
     $('#start').hide();
-    // display quest index userAns.length
-    let a = userAns.length;
+    // display first quest (index 0)
+    $('#questNbr').show().text('Question ' + 1);
+    $('#quest').text(quest[0].text)
+    $('#answer').show();
+    // one choice for each case
+    $('.case').each(function (i){
+        $(this).text(quest[0].choice[i]);
+    })
+})
+
+let goodAns = [];
+
+$('.case').click(function (){
+    let a = goodAns.length + 1;
+    // display quest index goodAns.length
     $('#questNbr').show().text('Question ' + (a + 1));
     $('#quest').text(quest[a].text)
     $('#answer').show();
@@ -144,16 +153,19 @@ $('.ans').click(function (){
     $('.case').each(function (i){
         $(this).text(quest[a].choice[i]);
     })
-    a = userAns.push(($(this).index()-1));
-    console.log("index " + ($(this).index()-1));
-})
 
-// $('.case').click(function (){
-//     a++;
-//     $('#questNbr').show().text('');
-//     $('#quest').text(quest[a].text)
-//     // one choice for each case
-//     $('.case').each(function (i){
-//         $(this).text(quest[a].choice[i]);
-//     })
-// })
+    console.log(quest[a-1].good);
+    let idx = $(this).index();
+    console.log(idx);
+
+    if($(this).index() === quest[a-1].good){
+        let ref = goodAns.push('Bonne réponse');
+    }
+    else {
+        let ref = goodAns.push(quest[a].answer);
+    }
+
+
+    console.log(goodAns);
+    console.log(goodAns.length);
+})
