@@ -6,7 +6,7 @@
 
 html {
     font-size: 62.5%;
-    font-family: sans-serif;
+    font-family: cursive;
 }
 
 body {
@@ -41,7 +41,7 @@ body {
 }
 
 #middle {
-    width: 33%;
+    width: 45%;
 }
 
 .frame, .case {
@@ -53,7 +53,7 @@ body {
 }
 
 .frame, #answer {
-    min-height: 10vh;
+    min-height: 5vh;
     margin: 1vh auto;
 }
 
@@ -77,8 +77,14 @@ body {
 }
 
 #screenEnd {
-    height: 10vh;
+    min-height: 5vh;
+    margin: 1vh;
     background-color: white;
+}
+
+#screenEnd div {
+    margin: 1vh;
+    text-align: left;
 }
 
 @media screen and (max-width: 800px) {

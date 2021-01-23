@@ -96,7 +96,7 @@ choice.click(function () {
         if ($(this).index() === quest[idx].good) {
             $(this).css('border', '2px solid green');
             idx++;
-            setTimeout(nextQuest, 1000, idx);
+            setTimeout(nextQuest, 500, idx);
         } else {
             $(this).css('border', '2px solid red');
             let arr = goodAns.push(quest[idx].answer);  // score = quest.length - arr
@@ -115,7 +115,6 @@ choice.click(function () {
         })
     }
 })
-
 
 
 // function display the question index=idx
