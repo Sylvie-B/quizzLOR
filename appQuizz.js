@@ -10,7 +10,7 @@ let quest = [
         "txt" : "Quel est son lien de parenté avec Bilbon ?",
         "good" : 3,
         "choice" : ["Frère", "Aucun lien", "Fils", "Neveu"],
-        "answer" : "Il est son neveu adoptif.",
+        "answer" : "Frodon est le neveu adoptif de Bilbon.",
         "pict" : "url('')",
     },
     {
@@ -86,30 +86,33 @@ let goodAns = [];
 // start
 $('#start').click(function (){
     $('.screen1').hide();
-    $('.screen2').slideDown(800);
-    //=> function nextQuest param idx = 0;
     nextQuest(0);
-
+    $('.screen2').slideDown(500);
 });
 
+// question 0 to 10
 choice.click(function () {
-    if(idx < 9) {
+    if(idx < quest.length - 1) {
         if ($(this).index() === quest[idx].good) {
-            // $(this).css('border', '2px solid green');
+            $(this).css('border', '2px solid green');
             idx++;
             setTimeout(nextQuest, 1000, idx);
         } else {
-            // $(this).css('border', '2px solid red');
+            $(this).css('border', '2px solid red');
             let arr = goodAns.push(quest[idx].answer);  // score = quest.length - arr
             console.log(arr);
             console.log(goodAns);
             idx++;
-            setTimeout(nextQuest, 1000, idx);
+            setTimeout(nextQuest, 500, idx);
         }
     }
     else{
-        $('.screen2').hide();
-        $('#screenEnd').show().text("ici");
+        $('.screen2').text();
+        $('#screenEnd').show()
+        $(goodAns).each(function (index){
+            console.log($(goodAns))
+            $('#screenEnd').append('<div>' + goodAns[index] + '</div>');
+        })
     }
 })
 
@@ -121,6 +124,7 @@ function nextQuest(idx){
     $('#quest').text(quest[idx].txt);
 // one choice for each case
     choice.each(function (i){
+        $(this).css('border', '1px solid black');
         $(this).text(quest[idx].choice[i]);
     })
 }
