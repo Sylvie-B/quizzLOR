@@ -87,50 +87,28 @@ $('#start').click(function (){
 
 let idx = 0;
 let score = 0;
+let choice = $('.case');
+let goodAns = [];
 
-// case
-// idx = 1;
-//  si idx < 10 {
-//  nextQuest(idx);
-//
-//
-// $('.case').click(function (){
-// //     get quest idx ?
-// let a = $('#quest').text();
-// console.log(a);
+choice.click(function (){
+    if($(this).index() === quest[idx].good){
+        $(this).css('border', '2px solid green');
+        score++;
+    }
+    else {
+        $(this).css('border', '2px solid red');
+        let arr = goodAns.push(quest[idx].answer);
+    }
+    console.log(goodAns);
+})
 
-//     // display quest index goodAns.length
-//
-//     $('#quest').text(quest[a].text)
-//     $('#answer').show();
-//     // one choice for each case
-//     $('.case').each(function (i){
-//         $(this).text(quest[a].choice[i]);
-//     })
-//
-//     console.log(quest[a-1].good);
-//     let idx = $(this).index();
-//     console.log(idx);
-//
-//     if($(this).index() === quest[a-1].good){
-//         let ref = goodAns.push('Bonne réponse');
-//     }
-//     else {
-//         let ref = goodAns.push(quest[a].answer);
-//     }
-//
-//
-//     console.log(goodAns);
-//     console.log(goodAns.length);
-// })
 
-// next question
+// function display the question index=idx
 function nextQuest(idx){
     $('#questNbr').show().text('Question ' + (idx + 1));
     $('#quest').text(quest[idx].txt);
-
 // one choice for each case
-    $('.case').each(function (i){
+    choice.each(function (i){
         $(this).text(quest[0].choice[i]);
     })
 }
