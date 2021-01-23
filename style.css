@@ -39,12 +39,12 @@ body {
     font-size: 1.5vw;
 }
 
-#questNbr, #quest, .case {
+.frame, .case {
     background-color: white;
     border: black 1px solid;
 }
 
-#questNbr, #quest, #answer {
+.frame, #answer {
     width: 80%;
     min-height: 10vh;
     margin: 1vh auto;
@@ -52,8 +52,12 @@ body {
 
 #start {
     width: 5vw;
+    height: 2vw;
     margin: 2vh auto;
-    background: darkcyan;
+}
+
+#start p {
+    background-color: darkslategrey;
 }
 
 #answer {

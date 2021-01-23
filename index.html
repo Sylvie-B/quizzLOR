@@ -13,22 +13,28 @@
             <div id="gameBoard">
 
                 <!--    number of question / question number    -->
-                <div id="questNbr">
-                    Quiz de <span id="nbr"></span> questions
+                <div class="frame">
+                    <div class="screen1">
+                        Quiz de <span id="nbr"></span> questions
+                    </div>
+                    <div class="screen2" id="questNbr"></div>
                 </div>
 
                 <!--    text before start    -->
-                <div id="quest">
-                    Sur la trilogie du Seigneur des anneaux
+                <div class="frame">
+                    <div class="screen1">
+                        Sur la trilogie du Seigneur des anneaux
+                    </div>
+                    <div class="screen2" id="quest"></div>
                 </div>
 
                 <!--    button before start    -->
                 <div id="start">
-                    <p>START</p>
+                    <p class="screen1">START</p>
                 </div>
 
-                <!--    start button to hidden / multiple choice    -->
-                <div id="answer">
+                <!--    multiple choice    -->
+                <div class="screen2" id="answer">
                     <div class="case"></div>
                     <div class="case"></div>
                     <div class="case"></div>
