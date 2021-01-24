@@ -10,15 +10,14 @@ let quest = [
         "txt" : "Quel est son lien de parenté avec Bilbon ?",
         "good" : 3,
         "choice" : ["Frère", "Aucun lien", "Fils", "Neveu"],
-        "answer" : "Frodon est le neveu adoptif de Bilbon.",
+        "answer" : "Frodon est le neveu de Bilbon.",
         "pict" : "url('')",
     },
     {
         "txt" : "Combien de personne forme la communauté de l'anneau ?",
         "good" : 2,
         "choice" : ["3", "6", "9", "12"],
-        "answer" : "A son départ, la communauté est formée de : 1 magicien, " +
-            "2 hommes, 1 nain, 1 elfe et 4 hobbits, donc 9 en tout",
+        "answer" : "9 en tout : 1 magicien, 2 hommes, 1 nain, 1 elfe et 4 hobbits.",
         "pict" : "url('')",
     },
     {
@@ -39,7 +38,7 @@ let quest = [
         "txt" : "Rendez-vous est donné avec Gandalf à l'auberge :",
         "good" : 1,
         "choice" : ["du Dragon vert", "du Poney fringant", "du Chaudron baveu", "de la Cantina"],
-        "answer" : "Ils se donnent rendez-vous à l'auberge du Poney fringant",
+        "answer" : "Ils se donnent rendez-vous à l'auberge du Poney fringant.",
         "pict" : "url('')",
     },
     {
@@ -52,14 +51,14 @@ let quest = [
     {
         "txt" : "Trouvé l'intrus",
         "good" : 2,
-        "choice" : ["Gandalf le Blanc", "Gandalf le Gris", "Gandalf le Brun", "Mithrandir"],
-        "answer" : "\"Le Brun\" ne fait pas partie des surnoms de Gandalf, mais il en a d'autres...",
+        "choice" : ["Gandalf le Blanc", "Le trouble paix", "Gandalf le Brun", "Mithrandir"],
+        "answer" : "\"Le Brun\" ne fait pas partie des surnoms de Gandalf.",
         "pict" : "url('')",
     },
     {
         "txt" : "Qu'est-ce que le Lembas ?",
         "good" : 1,
-        "choice" : ["la langue des elfe", "du pain elfique", "le minerai de la Moria", "l'herbe à pipe"],
+        "choice" : ["Un steak de warg", "du pain elfique", "le minerai de la Moria", "l'herbe à pipe"],
         "answer" : "Une bouchée de lembas, le pain elfique, suffit à nourrir un adulte pour la journée.",
         "pict" : "url('')",
     },
@@ -73,10 +72,7 @@ let quest = [
 ]
 
 $('#container').css('background-color', "#ff7f5080");
-// set display
-$('.screen2').hide();
-$('#screenEnd').hide();
-$('#nbr').text(quest.length); // number of quest
+
 
 let idx = 0;
 let choice = $('.case');
@@ -85,6 +81,8 @@ let score = 0;
 let goodAns = [];
 let wrong = 0;
 
+// call first screen
+firstScreen();
 
 // start ==> first quest
 $('#start').click(function (){
@@ -103,14 +101,35 @@ choice.click(function () {
     else {
         // end game
         check($(this), idx);
+        $('#answer').slideUp(500);
         $('#questNbr').text('Fin du questionnaire ');
         $('#quest').text('votre score est de : ' + score);
         $('#screenEnd').show()
         $(goodAns).each(function (index) {
-            $('#screenEnd').append('<div>' + goodAns[index] + '</div>');
+            $('#goodAns').append('<div>' + goodAns[index] + '</div>');
         })
     }
 })
+
+// restart
+$('#restart').click(function (){
+    firstScreen();
+})
+
+// first screen
+// show screen 1 // begin text // value score idx arr to 0
+// hide screen 2 // screen end
+function firstScreen (){
+    $('.screen1').show();
+    $('.screen2').hide();
+    $('#screenEnd').hide();
+    $('#nbr').text(quest.length); // number of quest
+    idx = 0;
+    choice = $('.case');
+    score = 0;
+    goodAns = [];
+    wrong = 0;
+}
 
 // check user answer
 function check(userChoice,idx){
@@ -122,9 +141,6 @@ function check(userChoice,idx){
     else {
         userChoice.css('border', '2px solid red');
         wrong = goodAns.push(quest[idx].answer);  // score = quest.length - wrong
-        console.log("w : " + wrong);
-        console.log(goodAns);
-
     }
 }
 
@@ -139,5 +155,4 @@ function nextQuest(idx){
     })
 }
 
-// todo restart
-// display background
+// todo display background
