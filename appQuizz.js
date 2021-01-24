@@ -32,7 +32,7 @@ let quest = [
         "txt" : "Quel est le surnom d'Aragorn ?",
         "good" : 0,
         "choice" : ["Grand-pas", "Long-bow", "Longue-barbe", "Roitelet"],
-        "answer" : "Aragorn a pour surnom Grand-pas, mais il en a d'autre...",
+        "answer" : "Aragorn a pour surnom Grand-pas.",
         "pict" : "url('')",
     },
     {
@@ -60,12 +60,12 @@ let quest = [
         "txt" : "Qu'est-ce que le Lembas ?",
         "good" : 1,
         "choice" : ["la langue des elfe", "du pain elfique", "le minerai de la Moria", "l'herbe à pipe"],
-        "answer" : "Le pain elfique, une bouchée suffit à nourrir un adulte pour la journée.",
+        "answer" : "Une bouchée de lembas, le pain elfique, suffit à nourrir un adulte pour la journée.",
         "pict" : "url('')",
     },
     {
         "txt" : "Avec quelle créature combat Gandalf sur le pont la mine ?",
-        "good" : 3,
+        "good" : 2,
         "choice" : ["un dragon", "un orque", "un balrog", "Sauron"],
         "answer" : "Il combat le balrog et lui dit : :\"Vous ne passerz-pas !\"",
         "pict" : "url('')",
@@ -80,42 +80,51 @@ $('#nbr').text(quest.length); // number of quest
 
 let idx = 0;
 let choice = $('.case');
+// answer number = score + goodAns.length
+let score = 0;
 let goodAns = [];
+let wrong = 0;
 
 
-// start
+// start ==> first quest
 $('#start').click(function (){
     $('.screen1').hide();
     nextQuest(0);
     $('.screen2').slideDown(500);
 });
 
-// question 0 to 10
+// first answer
 choice.click(function () {
-    if(idx < quest.length - 1) {
-        if ($(this).index() === quest[idx].good) {
-            $(this).css('border', '2px solid green');
-            idx++;
-            setTimeout(nextQuest, 500, idx);
-        } else {
-            $(this).css('border', '2px solid red');
-            let arr = goodAns.push(quest[idx].answer);  // score = quest.length - arr
-            console.log(arr);
-            console.log(goodAns);
-            idx++;
-            setTimeout(nextQuest, 500, idx);
-        }
+    if((score + wrong) < 9){
+        check($(this), idx);
+        idx++;
+        setTimeout(nextQuest, 500, idx);
     }
-    else{
-        $('.screen2').text();
+    else {
+        check($(this), idx);
+        $('.screen2').slideUp();
         $('#screenEnd').show()
-        $(goodAns).each(function (index){
-            console.log($(goodAns))
+        $(goodAns).each(function (index) {
             $('#screenEnd').append('<div>' + goodAns[index] + '</div>');
         })
     }
 })
 
+// check user answer
+function check(userChoice,idx){
+    if (userChoice.index() === quest[idx].good) {
+        userChoice.css('border', '2px solid green');
+        score++;
+        console.log("score : " + score);
+    }
+    else {
+        userChoice.css('border', '2px solid red');
+        wrong = goodAns.push(quest[idx].answer);  // score = quest.length - wrong
+        console.log("w : " + wrong);
+        console.log(goodAns);
+
+    }
+}
 
 // function display the question index=idx
 function nextQuest(idx){
