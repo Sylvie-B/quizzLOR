@@ -125,7 +125,6 @@ function firstScreen (){
     $('#screenEnd').hide();
     $('#nbr').text(quest.length); // number of quest
     idx = 0;
-    choice = $('.case');
     score = 0;
     goodAns = [];
     wrong = 0;

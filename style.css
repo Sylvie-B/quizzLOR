@@ -76,15 +76,21 @@ body {
     height: 5vh;
 }
 
-#screenEnd {
+#goodAns {
     min-height: 5vh;
     margin: 1vh;
     background-color: white;
+    text-align: left;
 }
 
-#screenEnd div {
+#goodAns div {
     margin: 1vh;
-    text-align: left;
+}
+
+#screenEnd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media screen and (max-width: 800px) {
