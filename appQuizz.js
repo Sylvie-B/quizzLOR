@@ -101,8 +101,10 @@ choice.click(function () {
         setTimeout(nextQuest, 500, idx);
     }
     else {
+        // end game
         check($(this), idx);
-        $('.screen2').slideUp();
+        $('#questNbr').text('Fin du questionnaire ');
+        $('#quest').text('votre score est de : ' + score);
         $('#screenEnd').show()
         $(goodAns).each(function (index) {
             $('#screenEnd').append('<div>' + goodAns[index] + '</div>');
@@ -128,7 +130,7 @@ function check(userChoice,idx){
 
 // function display the question index=idx
 function nextQuest(idx){
-    $('#questNbr').show().text('Question ' + (idx + 1));
+    $('#questNbr').text('Question ' + (idx + 1));
     $('#quest').text(quest[idx].txt);
 // one choice for each case
     choice.each(function (i){
@@ -136,3 +138,6 @@ function nextQuest(idx){
         $(this).text(quest[idx].choice[i]);
     })
 }
+
+// todo restart
+// display background
