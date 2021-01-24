@@ -114,6 +114,7 @@ choice.click(function () {
 // restart
 $('#restart').click(function (){
     firstScreen();
+    console.log(idx, score, goodAns, wrong);
 })
 
 // first screen
@@ -135,7 +136,6 @@ function check(userChoice,idx){
     if (userChoice.index() === quest[idx].good) {
         userChoice.css('border', '2px solid green');
         score++;
-        console.log("score : " + score);
     }
     else {
         userChoice.css('border', '2px solid red');
@@ -155,3 +155,5 @@ function nextQuest(idx){
 }
 
 // todo display background
+// todo vider le txt de screen end
+
