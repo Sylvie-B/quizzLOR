@@ -66,7 +66,7 @@ let quest = [
         "txt" : "Avec quelle créature combat Gandalf sur le pont la mine ?",
         "good" : 2,
         "choice" : ["un dragon", "un orque", "un balrog", "Sauron"],
-        "answer" : "Il combat le balrog et lui dit : :\"Vous ne passerz-pas !\"",
+        "answer" : "Il combat le balrog",
         "pict" : "url('')",
     }
 ]
@@ -114,7 +114,7 @@ choice.click(function () {
 // restart
 $('#restart').click(function (){
     firstScreen();
-    console.log(idx, score, goodAns, wrong);
+    $('#goodAns').empty();
 })
 
 // first screen

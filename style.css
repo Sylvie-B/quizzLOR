@@ -57,7 +57,7 @@ body {
     margin: 1vh auto;
 }
 
-#start {
+#start, #restart{
     width: 10vw;
     margin: 2vh auto;
     padding: 2px 0;
