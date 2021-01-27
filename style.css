@@ -114,34 +114,30 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    .side img{
-        height: 30vh;
-    }
+
     #quizz {
         font-size: 4vw;
     }
     #gameBoard {
         font-size: 3vw;
         flex-direction: column;
+    }
+    .side{
+        width: 80%;
     }
     #middle {
         width: 100%;
     }
 }
 
-
 @media screen and (max-width: 400px) {
-    .side img{
-        height: 20vh;
-    }
+
     #quizz {
         font-size: 4vw;
     }
     #gameBoard {
-        font-size: 3vw;
+        font-size: 4vw;
         flex-direction: column;
     }
-    #middle {
-        width: 100%;
-    }
+
 }
