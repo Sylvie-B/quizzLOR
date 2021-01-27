@@ -39,7 +39,7 @@ let quest = [
         "good" : 1,
         "choice" : ["du Dragon vert", "du Poney fringant", "du Chaudron baveu", "de la Cantina"],
         "answer" : "Ils se donnent rendez-vous à l'auberge du Poney fringant.",
-        "pict" : "imgLord/auberge1.jpg",
+        "pict" : "imgLord/auberge.jpg",
     },
     {
         "txt" : "Combien de nazgul se lancent à leur poursuite",
@@ -75,7 +75,7 @@ let idx = 0;
 let choice = $('.case');
 let score = 0;
 // todo condition for nbr faulse
-// let goodAns = [];
+let goodAns = [];
 let wrong = 0;
 
 // call first screen
@@ -96,27 +96,32 @@ choice.click(function () {
         setTimeout(nextQuest, 500, idx);
     }
     else {
-        // end game
-        if(wrong < 1){
-            $('#goodAns').append('<div>You are the lord of the quiz</div>')
-        }
-        else if(wrong < 10){
-            $('#goodAns').append('<div>Relisez vos slide !</div>');
-        }
-        else if(wrong === 10){
-            $('.side').empty().append('<img alt="logo" src="imgLord/endGame.jpg"/>');
-        }
-        // good answer display
-        $$(goodAns).each(function (index) {
-            $('#goodAns').append('<div>' + goodAns[index] + '</div>');
-        })
-
         check($(this), idx);
         $('#answer').hide();
-        $('#questNbr').text('Fin du questionnaire ');
-        $('#quest').text('votre score est de : ' + score);
-
-        $('#screenEnd').slideDown(500);
+        $('#questNbr').text('votre score est de : ' + score);
+        // good answer in screenEnd
+        $(goodAns).each(function (index) {
+            $('#goodAns').append('<div>' + goodAns[index] + '</div>');
+        })
+        // end game
+        if(wrong < 3){
+            $('#quest').text('You are the lord of the quiz');
+            $('.side').empty().append('<img alt="logo" src="imgLord/ring.png"/>');
+            console.log("<3 : " + wrong);
+        }
+        else if(wrong < 8){
+            $('#quest').text('Relisez vos slide !');
+            $('.side').empty().append('<img alt="logo" src="imgLord/ring.png"/>');
+            console.log("<8 : " + wrong);
+            $('#screenEnd').slideDown(500);
+        }
+        else {
+            $('#quest').text('Les réponses étaient :');
+            $('.side').empty().append('<img alt="logo" src="imgLord/endGame.jpg"/>');
+            console.log("else : " + wrong);
+            $('#screenEnd').slideDown(500);
+        }
+        $('#restart').show();
     }
 })
 
@@ -134,6 +139,7 @@ function firstScreen (){
     $('.screen1').show();
     $('.screen2').hide();
     $('#screenEnd').hide();
+    $('#restart').hide();
     $('#nbr').text(quest.length); // number of quest
     idx = 0;
     score = 0;
