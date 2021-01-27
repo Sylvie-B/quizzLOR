@@ -74,7 +74,8 @@ let quest = [
 let idx = 0;
 let choice = $('.case');
 let score = 0;
-let goodAns = [];
+// todo commentaire for 0 faulse
+// let goodAns = [];
 let wrong = 0;
 
 // call first screen
