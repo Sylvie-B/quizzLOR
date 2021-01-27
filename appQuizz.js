@@ -14,7 +14,7 @@ let quest = [
         "pict" : "imgLord/bilbon.jpg",
     },
     {
-        "txt" : "Combien de personne forme la communauté de l'anneau pendant le conseil d'Elrond ?",
+        "txt" : "Lors du conseil d'Elrond, combien de personne forment la communauté de l'anneau ?",
         "good" : 2,
         "choice" : ["3", "6", "9", "12"],
         "answer" : "Ils sont 9 dans la communauté : 1 magicien, 2 hommes, 1 nain, 1 elfe et 4 hobbits.",
@@ -74,7 +74,7 @@ let quest = [
 let idx = 0;
 let choice = $('.case');
 let score = 0;
-// todo commentaire for 0 faulse
+// todo condition for nbr faulse
 // let goodAns = [];
 let wrong = 0;
 
@@ -97,14 +97,25 @@ choice.click(function () {
     }
     else {
         // end game
-        $('.side').empty().append('<img alt="logo" src="imgLord/endGame.jpg"/>');
+        if(wrong < 1){
+            $('#goodAns').append('<div>You are the lord of the quiz</div>')
+        }
+        else if(wrong < 10){
+            $('#goodAns').append('<div>Relisez vos slide !</div>');
+        }
+        else if(wrong === 10){
+            $('.side').empty().append('<img alt="logo" src="imgLord/endGame.jpg"/>');
+        }
+        // good answer display
+        $$(goodAns).each(function (index) {
+            $('#goodAns').append('<div>' + goodAns[index] + '</div>');
+        })
+
         check($(this), idx);
         $('#answer').hide();
         $('#questNbr').text('Fin du questionnaire ');
         $('#quest').text('votre score est de : ' + score);
-        $(goodAns).each(function (index) {
-            $('#goodAns').append('<div>' + goodAns[index] + '</div>');
-        })
+
         $('#screenEnd').slideDown(500);
     }
 })
