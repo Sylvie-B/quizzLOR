@@ -71,6 +71,8 @@ let quest = [
     }
 ]
 
+
+
 let idx = 0;
 let choice = $('.case');
 let score = 0;
@@ -160,7 +162,7 @@ function check(userChoice,idx){
 
 // function display the question index=idx
 function nextQuest(idx){
-    $('.side').empty().append('<img alt="logo" src='+ quest[idx].pict +'/>');
+    $('.side').empty().append("<img alt='logo' src='" + quest[idx].pict + "'/>");
     $('#questNbr').text('Question ' + (idx + 1));
     $('#quest').text(quest[idx].txt);
 // one choice for each case
@@ -169,3 +171,4 @@ function nextQuest(idx){
         $(this).text(quest[idx].choice[i]);
     })
 }
+
