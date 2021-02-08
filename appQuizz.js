@@ -4,74 +4,75 @@ let quest = [
         "good" : 0,
         "choice" : ["Un hobbit de la Comtée", "Le jardinier de Bilbon", "Un magicien", "Un futur pilote de X-Wing"],
         "answer" : "Frodon est un hobbit de la Comtée.",
-        "pict" : "./imgLord/frodo.jpg",
     },
     {
         "txt" : "Quel est son lien de parenté avec Bilbon ?",
         "good" : 3,
         "choice" : ["Frère", "Aucun lien", "Fils", "Neveu"],
         "answer" : "Frodon est le neveu de Bilbon.",
-        "pict" : "./imgLord/bilbon.jpg",
     },
     {
         "txt" : "Combien de personne forme la communauté de l'anneau pendant le conseil d'Elrond ?",
         "good" : 2,
         "choice" : ["3", "6", "9", "12"],
         "answer" : "Ils sont 9 dans la communauté : 1 magicien, 2 hommes, 1 nain, 1 elfe et 4 hobbits.",
-        "pict" : "./imgLord/elrond.jpg",
     },
     {
         "txt" : "Gimli est un ",
         "good" : 1,
         "choice" : ["elfe", "nain", "homme", "hobbit"],
         "answer" : "Gimli est le représentant des nains au sein de la communauté.",
-        "pict" : "./imgLord/communaute.jpg",
     },
     {
         "txt" : "Quel est le surnom d'Aragorn ?",
         "good" : 0,
         "choice" : ["Grand-pas", "Long-bow", "Longue-barbe", "Roitelet"],
         "answer" : "Aragorn a pour surnom Grand-pas.",
-        "pict" : "./imgLord/inTheShadow.jpg",
     },
     {
         "txt" : "Rendez-vous est donné avec Gandalf à l'auberge :",
         "good" : 1,
         "choice" : ["du Dragon vert", "du Poney fringant", "du Chaudron baveu", "de la Cantina"],
         "answer" : "Ils se donnent rendez-vous à l'auberge du Poney fringant.",
-        "pict" : "./imgLord/auberge1.jpg",
     },
     {
         "txt" : "Combien de nazgul se lancent à leur poursuite",
         "good" : 3,
         "choice" : ["1", "3", "6", "9"],
         "answer" : "Les spectres sont au nombre de 9.",
-        "pict" : "./imgLord/nazgul.jpg",
     },
     {
         "txt" : "Trouvé l'intrus",
         "good" : 2,
         "choice" : ["Gandalf le Blanc", "Le trouble paix", "Gandalf le Brun", "Mithrandir"],
         "answer" : "\"Le Brun\" ne fait pas partie des surnoms de Gandalf.",
-        "pict" : "./imgLord/moria.jpg",
     },
     {
         "txt" : "Qu'est-ce que le Lembas ?",
         "good" : 1,
         "choice" : ["Un steak de warg", "du pain elfique", "le minerai de la Moria", "l'herbe à pipe"],
         "answer" : "Une bouchée de lembas, le pain elfique, suffit à nourrir un adulte pour la journée.",
-        "pict" : "./imgLord/chaudron.jpg",
     },
     {
         "txt" : "Avec quelle créature combat Gandalf sur le pont la mine ?",
         "good" : 2,
         "choice" : ["un dragon", "un orque", "un balrog", "Sauron"],
         "answer" : "Il combat le balrog.",
-        "pict" : "./imgLord/gandalf.jpg",
     }
 ]
 
-
+let pictures = [
+    "./imgLord/frodo.jpg",
+    "./imgLord/bilbon.jpg",
+    "./imgLord/elrond.jpg",
+    "./imgLord/communaute.jpg",
+    "./imgLord/inTheShadow.jpg",
+    "./imgLord/auberge1.jpg",
+    "./imgLord/nazgul.jpg",
+    "./imgLord/moria.jpg",
+    "./imgLord/chaudron.jpg",
+    "./imgLord/gandalf.jpg",
+]
 
 let idx = 0;
 let choice = $('.case');
@@ -162,7 +163,7 @@ function check(userChoice,idx){
 
 // function display the question index=idx
 function nextQuest(idx){
-    $('.side').empty().append("<img alt='logo' src='" + quest[idx].pict + "'/>");
+    $('.side').empty().append("<img alt='logo' src='" + pictures[idx] + "'/>");
     $('#questNbr').text('Question ' + (idx + 1));
     $('#quest').text(quest[idx].txt);
 // one choice for each case
