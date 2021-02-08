@@ -67,7 +67,7 @@ let pictures = [
     "./imgLord/elrond.jpg",
     "./imgLord/communaute.jpg",
     "./imgLord/inTheShadow.jpg",
-    "./imgLord/auberge1.jpg",
+    "./imgLord/auberge.jpg",
     "./imgLord/nazgul.jpg",
     "./imgLord/moria.jpg",
     "./imgLord/chaudron.jpg",
